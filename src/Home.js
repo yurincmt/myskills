@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -13,6 +13,7 @@ import { Button } from "./components/Button";
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
   const [skillsList, setSkillsList] = useState([]);
+  const [greeting, setGreeting] = useState();
 
   function handleAddNewSkill() {
     if (newSkill.trim().length === 0) {
@@ -20,12 +21,26 @@ export function Home() {
     }
     setSkillsList([...skillsList, newSkill]);
   }
+
+  useEffect(() => {
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+      setGreeting('Bom dia');
+    } else if (12 <= currentHour && currentHour < 18) {
+      setGreeting('Boa tarde');
+    } else {
+      setGreeting('Boa noite');
+    }
+  }, [])
   
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
         Bem-Vindo, Yuri
       </Text>
+
+      <Text style={{color: '#FFF'}}>{greeting}</Text>
 
       <TextInput
         style={styles.textInput}
