@@ -1,19 +1,23 @@
 import { useState } from "react";
 import {
+  Alert,
   FlatList,
   SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
-  View
 } from "react-native";
+import { SkillCard } from "./components/SkillCard";
+import { Button } from "./components/Button";
 
 export function Home() {
-  const [newSkill, setNewSkill] = useState();
+  const [newSkill, setNewSkill] = useState('');
   const [skillsList, setSkillsList] = useState([]);
 
   function handleAddNewSkill() {
+    if (newSkill.trim().length === 0) {
+      return Alert.alert('Nova Habilidade', 'Nome inválido para habilidade!');
+    }
     setSkillsList([...skillsList, newSkill]);
   }
   
@@ -29,13 +33,8 @@ export function Home() {
         placeholderTextColor='#555'
         onChangeText={setNewSkill}
       />
-      
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.7}
-        onPress={handleAddNewSkill}>
-        <Text style={styles.buttonText}>Adicionar</Text>
-      </TouchableOpacity>
+
+      <Button />
 
       <Text style={[styles.title, {marginVertical: 40}]}>
         Habilidades
@@ -44,11 +43,7 @@ export function Home() {
       <FlatList
         data={skillsList}
         renderItem={(item) => (
-        <View style={styles.skillContainer}>
-          <Text style={styles.skillText}>
-            {item.item}
-          </Text>
-        </View>
+          <SkillCard />
         )}
       />
     </SafeAreaView>
@@ -74,29 +69,5 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 20,
     borderRadius: 6,
-  },
-  button: {
-    backgroundColor: '#A370F7',
-    padding: 15,
-    borderRadius: 6,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 17,
-    fontWeight: 'bold',
-  },
-  skillContainer: {
-    backgroundColor: '#1F1E25',
-    padding: 16,
-    borderRadius: 50,
-    marginVertical: 5,
-  },
-  skillText: {
-    color: '#FFF',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    fontSize: 20,
   }
 })
