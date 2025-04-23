@@ -34,7 +34,10 @@ export function Home() {
         onChangeText={setNewSkill}
       />
 
-      <Button />
+      <Button
+        title="Adicionar"
+        onPressFunc={handleAddNewSkill}
+      />
 
       <Text style={[styles.title, {marginVertical: 40}]}>
         Habilidades
@@ -43,7 +46,7 @@ export function Home() {
       <FlatList
         data={skillsList}
         renderItem={(item) => (
-          <SkillCard />
+          <SkillCard skillName={item.item}/>
         )}
       />
     </SafeAreaView>

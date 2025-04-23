@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native"
 
-export function SkillCard() {
+export function SkillCard({skillName}) {
   return (
     <View style={styles.skillContainer}>
       <Text style={styles.skillText}>
-        {item.item}
+        {skillName}
       </Text>
     </View>
   )
