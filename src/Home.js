@@ -20,6 +20,7 @@ export function Home() {
       return Alert.alert('Nova Habilidade', 'Nome inválido para habilidade!');
     }
     setSkillsList([...skillsList, newSkill]);
+    setNewSkill('');
   }
 
   useEffect(() => {
@@ -47,6 +48,7 @@ export function Home() {
         placeholder="Nova Habilidade"
         placeholderTextColor='#555'
         onChangeText={setNewSkill}
+        value={newSkill}
       />
 
       <Button
