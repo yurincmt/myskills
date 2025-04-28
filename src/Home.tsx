@@ -10,16 +10,27 @@ import {
 import { SkillCard } from "./components/SkillCard";
 import { Button } from "./components/Button";
 
+interface SkillDataType {
+  id: string;
+  name: string;
+}
+
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
-  const [skillsList, setSkillsList] = useState([]);
-  const [greeting, setGreeting] = useState();
+  const [skillsList, setSkillsList] = useState<SkillDataType[]>([]);
+  const [greeting, setGreeting] = useState('');
 
   function handleAddNewSkill() {
     if (newSkill.trim().length === 0) {
       return Alert.alert('Nova Habilidade', 'Nome inválido para habilidade!');
     }
-    setSkillsList([...skillsList, newSkill]);
+
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill,
+    }
+    
+    setSkillsList([...skillsList, data]);
     setNewSkill('');
   }
 
@@ -62,9 +73,11 @@ export function Home() {
 
       <FlatList
         data={skillsList}
-        renderItem={(item) => (
-          <SkillCard skillName={item.item}/>
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <SkillCard skillName={item.name}/>
         )}
+        showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
   )
