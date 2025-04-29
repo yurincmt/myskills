@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   removeButton: {
-    flex: 1,
+    padding: 16,
     borderRadius: 50,
     backgroundColor: '#ef4444',
     justifyContent: 'center',
