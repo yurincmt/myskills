@@ -4,6 +4,14 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
+## Step 0: Depenências do projeto
+
+No diretório raiz do projeto, execute:
+
+```sh
+yarn add
+```
+
 ## Step 1: Start Metro
 
 First, you will need to run **Metro**, the JavaScript build tool for React Native.
@@ -11,10 +19,6 @@ First, you will need to run **Metro**, the JavaScript build tool for React Nativ
 To start the Metro dev server, run the following command from the root of your React Native project:
 
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
 yarn start
 ```
 
@@ -25,10 +29,6 @@ With Metro running, open a new terminal window/pane from the root of your React 
 ### Android
 
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
 yarn android
 ```
 
@@ -51,10 +51,6 @@ bundle exec pod install
 For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
 
 ```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
 ```
 
